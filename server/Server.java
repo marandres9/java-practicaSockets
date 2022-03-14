@@ -28,21 +28,15 @@ class Server {
         System.out.println("Server online");
 
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-        
-        String msg;
-        // boolean shutdown = false;
-        // while (!shutdown) {
-        //     if (in.ready()) {
-                while ((msg = in.readLine()) != null) {
-                    System.out.println("reading...");
 
-                    addClient();
-                    System.out.println(msg);
-                    System.out.println("Client count: " + clientCount);
-                }
-                // shutdown = true;
-        //     }
-        // }
+        String nextLine;
+        while ((nextLine = in.readLine()) != null) {
+            System.out.println("reading...");
+
+            addClient();
+            System.out.println(nextLine);
+            System.out.println("Client count: " + clientCount);
+        }
 
         System.out.println("server offline");
         client.close();

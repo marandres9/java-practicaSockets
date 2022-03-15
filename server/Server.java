@@ -6,27 +6,44 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 class Server {
     ServerSocket server;
-    Socket client;
+    ArrayList<Socket> clients;
     int PORT = 8080;
     BufferedReader in;
     DataOutputStream out;
 
     int clientCount;
+    int clientConnections;
 
     void addClient() {clientCount++;}
     int getClientCount() {return this.clientCount;}
 
-    Server() throws IOException {
-        server = new ServerSocket(PORT);
+    public class ConnectionHandler implements Runnable {
+        @Override
+        public void run() {
+            
+        }
     }
     
-    public void start() throws IOException {
-        client = server.accept();
-        System.out.println("Server online");
+    Server() throws IOException {
+        server = new ServerSocket(PORT);
+        clientCount = 0;
+        clientConnections = 0;
+    }
 
+    void addClientConnections() throws IOException {
+        clients.add(server.accept());
+        clientConnections++;}
+    public int getClientConnections() {return clientConnections;}
+    z
+    public void start() throws IOException {
+        addClientConnections();
+        System.out.println("Client " + (getClientConnections()+1) + " online");
+        new Thread(new ConnectionHandler()).start();
+        
         in = new BufferedReader(new InputStreamReader(client.getInputStream()));
 
         String nextLine;

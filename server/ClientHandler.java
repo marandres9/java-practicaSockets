@@ -13,8 +13,12 @@ public class ClientHandler extends Thread {
     DataOutputStream out;
     // client counter
     static int clientCount = 0;
-    void addClient() {clientCount++;}
-    int getClientCount() {return clientCount;}
+    void addClient() {
+        clientCount++;
+    }
+    int getClientCount() {
+        return clientCount;
+    }
 
     int instanceNumber;
     
@@ -35,7 +39,7 @@ public class ClientHandler extends Thread {
             while ((nextLine = in.readLine()) != null) {    
                 addClient();
                 System.out.print(nextLine);
-                System.out.println(" -- Client count: " + clientCount);
+                System.out.println(" -- Client count: " + this.getClientCount());
             }
     
             System.out.println("Socket offline");

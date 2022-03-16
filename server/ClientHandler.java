@@ -42,7 +42,7 @@ public class ClientHandler extends Thread {
                 System.out.println(" -- Client count: " + this.getClientCount());
             }
     
-            System.out.println("Socket offline");
+            System.out.println("Socket " + (this.instanceNumber) + "  offline");
             client.close();    
         } catch (IOException e) {
             System.out.println(e.getMessage());

@@ -20,7 +20,7 @@ class Client {
 
     public void start() throws IOException {
         Scanner scanner = new Scanner(System.in);
-
+        
         System.out.println("Ingrese \"0\" para salir, o cualq cosa para" + 
         " registrar un cliente");
 
